@@ -1,0 +1,24 @@
+#!/bin/bash
+
+first=$1
+last="${@: -1}"
+total=$#
+lastsum=$(( $first + $last ))
+
+echo "First arg = $first Last arg = $last Total args = $total" 
+
+count=1
+for param in $@
+do
+echo "Arg$count: $param"
+count=$(( $count + 1 ))
+done
+
+for param in "${@:1:$(($#-1))}"
+do
+store=$param
+shift
+sum=$(( $1 + $param ))
+echo $sum
+done
+echo $lastsum
